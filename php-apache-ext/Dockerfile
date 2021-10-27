@@ -3,7 +3,7 @@ FROM golang AS builder
 # bash: /usr/local/bin/mhsendmail: No such file or directory
 RUN go install github.com/mailhog/mhsendmail@latest
 
-FROM wordpress:php8.0-apache
+FROM wordpress:php7.4-apache
 
   # install mhsendmail
 COPY --from=builder /go/bin/mhsendmail /usr/local/bin/
