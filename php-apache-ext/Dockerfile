@@ -3,7 +3,7 @@ FROM golang AS builder
 # bash: /usr/local/bin/mhsendmail: No such file or directory
 RUN go install github.com/mailhog/mhsendmail@latest
 
-FROM wordpress:php7.4-apache
+FROM php:7.4-apache
 
   # install mhsendmail
 COPY --from=builder /go/bin/mhsendmail /usr/local/bin/
@@ -101,5 +101,5 @@ RUN  apt update && apt install -y --no-install-recommends \
   opcache \
   zip \
   ; \
-  pecl install imagick-3.4.4; \
+  pecl install imagick; \
   docker-php-ext-enable imagick;
